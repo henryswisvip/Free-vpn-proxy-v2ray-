@@ -1,2 +1,2 @@
 # V2rayU
-v2ray-core macos gui client written by swift
+v2rayConfig-core macos gui client written by swift

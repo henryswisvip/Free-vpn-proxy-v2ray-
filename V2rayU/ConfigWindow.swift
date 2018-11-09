@@ -199,10 +199,10 @@ class ConfigWindowController: NSWindowController, NSWindowDelegate, NSTabViewDel
         self.v2rayConfig = V2rayConfig()
 
         // re parse json
-        let errmsg = self.v2rayConfig.parseJson(jsonText: self.configText.string)
-        if errmsg != "" {
-            print("parse json: ", errmsg)
-            self.errTip.stringValue = errmsg
+        let res = self.v2rayConfig.parseJson(jsonText: self.configText.string)
+        if res != "" {
+            print("parse json: ", res)
+            self.errTip.stringValue = res
             return
         }
 
@@ -210,84 +210,186 @@ class ConfigWindowController: NSWindowController, NSWindowDelegate, NSTabViewDel
     }
 
     func switchToImportView() {
-        let jsonText = v2rayConfig.combineManual()
+        // export
+        self.export()
+
+        let jsonText = self.v2rayConfig.combineManualData()
         self.configText.string = jsonText
-        self.saveConfig()
+        // re parse json
+        let res = self.v2rayConfig.parseJson(jsonText: self.configText.string)
+        if res != "" {
+            print("parse json: ", res)
+            self.errTip.stringValue = res
+            return
+        }
+
+//        self.saveConfig()
     }
 
-    func bindData() {
-        print("bindData")
+    func export() {
         // ========================== base start =======================
         // base
-        self.httpPort.stringValue = v2rayConfig.httpPort
-        self.sockPort.stringValue = v2rayConfig.socksPort
-        self.enableUdp.intValue = v2rayConfig.ennableUdp ? 1 : 0
-        self.enableMux.intValue = v2rayConfig.ennableMux ? 1 : 0
-        self.muxConcurrent.intValue = Int32(v2rayConfig.mux)
-        self.dnsServers.stringValue = v2rayConfig.dns
+        v2rayConfig.setString(key: .httpPort, val: self.httpPort.stringValue)
+        v2rayConfig.setString(key: .sockPort, val: self.sockPort.stringValue)
+        v2rayConfig.setBool(key: .enableUdp, val: self.enableUdp.state.rawValue > 0)
+        v2rayConfig.setBool(key: .enableMux, val: self.enableMux.state.rawValue > 0)
+        v2rayConfig.setString(key: .muxConcurrent, val: self.muxConcurrent.stringValue)
+        v2rayConfig.setString(key: .dnsServers, val: self.dnsServers.stringValue)
         // ========================== base end =======================
 
         // ========================== server start =======================
-        self.switchProtocol.selectItem(withTitle: v2rayConfig.serverProtocol)
-        self.switchOutboundView(protocolTitle: v2rayConfig.serverProtocol)
+        if self.switchProtocol.indexOfSelectedItem > -1 {
+            v2rayConfig.setString(key: .serverProtocol, val: self.switchProtocol.titleOfSelectedItem!)
+        }
 
         // vmess
-        self.vmessAddr.stringValue = v2rayConfig.serverVmess.address
-        self.vmessPort.stringValue = v2rayConfig.serverVmess.port
-        if v2rayConfig.serverVmess.users.count > 0 {
-            let user = v2rayConfig.serverVmess.users[0]
-            self.vmessAlterId.intValue = Int32(user.alterId)
-            self.vmessLevel.intValue = Int32(user.level)
-            self.vmessUserId.stringValue = user.id
-            self.vmessSecurity.indexOfItem(withTitle: user.security)
+        v2rayConfig.setString(key: .vmessAddr, val: self.vmessAddr.stringValue)
+        v2rayConfig.setString(key: .vmessPort, val: self.vmessPort.stringValue)
+        v2rayConfig.setString(key: .vmessAlterId, val: self.vmessAlterId.stringValue)
+        v2rayConfig.setString(key: .vmessUserId, val: self.vmessUserId.stringValue)
+        if self.vmessSecurity.indexOfSelectedItem > -1 {
+            v2rayConfig.setString(key: .vmessSecurity, val: self.vmessSecurity.titleOfSelectedItem!)
         }
 
         // shadowsocks
-        self.shadowsockAddr.stringValue = v2rayConfig.serverShadowsocks.address
-        if v2rayConfig.serverShadowsocks.port > 0 {
-            self.shadowsockPort.stringValue = String(v2rayConfig.serverShadowsocks.port)
+        v2rayConfig.setString(key: .shadowsockAddr, val: self.shadowsockAddr.stringValue)
+        v2rayConfig.setString(key: .shadowsockPort, val: self.shadowsockPort.stringValue)
+        v2rayConfig.setString(key: .shadowsockPass, val: self.shadowsockPass.stringValue)
+        if self.shadowsockMethod.indexOfSelectedItem > -1 {
+            v2rayConfig.setString(key: .shadowsockMethod, val: self.shadowsockMethod.titleOfSelectedItem!)
         }
-        self.shadowsockPass.stringValue = v2rayConfig.serverShadowsocks.password
-        self.shadowsockMethod.indexOfItem(withTitle: v2rayConfig.serverShadowsocks.method)
 
         // socks5
-        self.socks5Addr.stringValue = v2rayConfig.serverSocks5.address
-        self.socks5Port.stringValue = v2rayConfig.serverSocks5.port
-        self.socks5User.stringValue = v2rayConfig.serverSocks5.users[0].user
-        self.socks5Pass.stringValue = v2rayConfig.serverSocks5.users[0].pass
+        v2rayConfig.setString(key: .socks5Addr, val: self.socks5Addr.stringValue)
+        v2rayConfig.setString(key: .socks5Port, val: self.socks5Port.stringValue)
+        v2rayConfig.setString(key: .socks5User, val: self.socks5User.stringValue)
+        v2rayConfig.setString(key: .socks5Pass, val: self.socks5Pass.stringValue)
         // ========================== server end =======================
 
         // ========================== stream start =======================
-        self.switchNetwork.selectItem(withTitle: v2rayConfig.streamNetwork)
-        self.switchSteamView(network: v2rayConfig.streamNetwork)
+        // network
+        if self.switchNetwork.indexOfSelectedItem > -1 {
+            v2rayConfig.setString(key: .streamNetwork, val: self.switchNetwork.titleOfSelectedItem!)
+        }
 
-        self.streamAllowSecure.intValue = v2rayConfig.streamTlsAllowInsecure ? 1 : 0
-        self.streamSecurity.selectItem(withTitle: v2rayConfig.streamTlsSecurity)
-        self.streamTlsServerName.stringValue = v2rayConfig.streamTlsServerName
+        // tls
+        v2rayConfig.setBool(key: .streamAllowSecure, val: self.streamAllowSecure.state.rawValue > 0)
+        v2rayConfig.setString(key: .streamTlsServerName, val: self.streamTlsServerName.stringValue)
+        if self.streamSecurity.indexOfSelectedItem > -1 {
+            v2rayConfig.setString(key: .streamSecurity, val: self.streamSecurity.titleOfSelectedItem!)
+        }
 
         // tcp
-        self.tcpHeaderType.selectItem(withTitle: v2rayConfig.streamTcp.header.type)
+        if self.tcpHeaderType.indexOfSelectedItem > -1 {
+            v2rayConfig.setString(key: .tcpHeaderType, val: self.tcpHeaderType.titleOfSelectedItem!)
+        }
 
         // kcp
-        self.kcpHeader.selectItem(withTitle: v2rayConfig.streamKcp.header.type)
-        self.kcpMtu.intValue = Int32(v2rayConfig.streamKcp.mtu)
-        self.kcpTti.intValue = Int32(v2rayConfig.streamKcp.tti)
-        self.kcpUplinkCapacity.intValue = Int32(v2rayConfig.streamKcp.uplinkCapacity)
-        self.kcpDownlinkCapacity.intValue = Int32(v2rayConfig.streamKcp.downlinkCapacity)
-        self.kcpReadBufferSize.intValue = Int32(v2rayConfig.streamKcp.readBufferSize)
-        self.kcpWriteBufferSize.intValue = Int32(v2rayConfig.streamKcp.writeBufferSize)
-        self.kcpCongestion.intValue = v2rayConfig.streamKcp.congestion ? 1 : 0
+        v2rayConfig.setString(key: .kcpMtu, val: self.kcpMtu.stringValue)
+        v2rayConfig.setString(key: .kcpTti, val: self.kcpTti.stringValue)
+        v2rayConfig.setString(key: .kcpUplinkCapacity, val: self.kcpUplinkCapacity.stringValue)
+        v2rayConfig.setString(key: .kcpDownlinkCapacity, val: self.kcpDownlinkCapacity.stringValue)
+        v2rayConfig.setString(key: .kcpReadBufferSize, val: self.kcpReadBufferSize.stringValue)
+        v2rayConfig.setString(key: .kcpWriteBufferSize, val: self.kcpWriteBufferSize.stringValue)
+        v2rayConfig.setString(key: .kcpWriteBufferSize, val: self.kcpWriteBufferSize.stringValue)
+        v2rayConfig.setBool(key: .kcpCongestion, val: self.kcpCongestion.state.rawValue > 0)
 
         // h2
-        self.h2Host.stringValue = v2rayConfig.streamH2.host.count > 0 ? v2rayConfig.streamH2.host[0] : ""
-        self.h2Path.stringValue = v2rayConfig.streamH2.path
+        v2rayConfig.setString(key: .h2Host, val: self.h2Host.stringValue)
+        v2rayConfig.setString(key: .h2Path, val: self.h2Path.stringValue)
 
         // ws
-        self.wsPath.stringValue = v2rayConfig.streamWs.path
-        self.wsHost.stringValue = v2rayConfig.streamWs.headers.host
+        v2rayConfig.setString(key: .wsPath, val: self.wsPath.stringValue)
+        v2rayConfig.setString(key: .wsHost, val: self.wsHost.stringValue)
 
         // domainsocket
-        self.dsPath.stringValue = v2rayConfig.streamDs.path
+        self.dsPath.stringValue = v2rayConfig.getString(key: .dsPath)
+        // ========================== stream end =======================
+    }
+
+    func bindData() {
+        // ========================== base start =======================
+        // base
+        self.httpPort.stringValue = v2rayConfig.getString(key: .httpPort)
+        self.sockPort.stringValue = v2rayConfig.getString(key: .sockPort)
+        self.enableUdp.intValue = v2rayConfig.getBool(key: .enableUdp) ? 1 : 0
+        self.enableMux.intValue = v2rayConfig.getBool(key: .enableMux) ? 1 : 0
+        self.muxConcurrent.intValue = Int32(v2rayConfig.getInt(key: .muxConcurrent))
+        self.dnsServers.stringValue = v2rayConfig.getString(key: .dnsServers)
+        // ========================== base end =======================
+
+        // ========================== server start =======================
+        if self.switchProtocol.itemTitles.contains(v2rayConfig.getString(key: .serverProtocol)) {
+            self.switchProtocol.selectItem(withTitle: v2rayConfig.getString(key: .serverProtocol))
+            self.switchOutboundView(protocolTitle: v2rayConfig.getString(key: .serverProtocol))
+        }
+
+        // vmess
+        self.vmessAddr.stringValue = v2rayConfig.getString(key: .vmessAddr)
+        self.vmessPort.stringValue = v2rayConfig.getString(key: .vmessPort)
+        self.vmessAlterId.intValue = v2rayConfig.getInt(key: .vmessAlterId)
+        self.vmessLevel.intValue = v2rayConfig.getInt(key: .vmessLevel)
+        self.vmessUserId.stringValue = v2rayConfig.getString(key: .vmessUserId)
+        if self.vmessSecurity.itemTitles.contains(v2rayConfig.getString(key: .vmessSecurity)) {
+            self.vmessSecurity.selectItem(withTitle: v2rayConfig.getString(key: .vmessSecurity))
+        }
+
+        // shadowsocks
+        self.shadowsockAddr.stringValue = v2rayConfig.getString(key: .shadowsockAddr)
+        self.shadowsockPort.stringValue = String(v2rayConfig.getString(key: .shadowsockPort))
+        self.shadowsockPass.stringValue = v2rayConfig.getString(key: .shadowsockPass)
+        if self.shadowsockMethod.itemTitles.contains(v2rayConfig.getString(key: .shadowsockMethod)) {
+            self.shadowsockMethod.selectItem(withTitle: v2rayConfig.getString(key: .shadowsockMethod))
+        }
+
+        // socks5
+        self.socks5Addr.stringValue = v2rayConfig.getString(key: .socks5Addr)
+        self.socks5Port.stringValue = v2rayConfig.getString(key: .socks5Port)
+        self.socks5User.stringValue = v2rayConfig.getString(key: .socks5User)
+        self.socks5Pass.stringValue = v2rayConfig.getString(key: .socks5Pass)
+        // ========================== server end =======================
+
+        // ========================== stream start =======================
+        // network
+        if self.switchNetwork.itemTitles.contains(v2rayConfig.getString(key: .streamNetwork)) {
+            self.switchNetwork.selectItem(withTitle: v2rayConfig.getString(key: .streamNetwork))
+            self.switchSteamView(network: v2rayConfig.getString(key: .streamNetwork))
+        }
+
+        // tls
+        self.streamAllowSecure.intValue = v2rayConfig.getBool(key: .streamAllowSecure) ? 1 : 0
+        self.streamTlsServerName.stringValue = v2rayConfig.getString(key: .streamTlsServerName)
+        if self.streamSecurity.itemTitles.contains(v2rayConfig.getString(key: .streamSecurity)) {
+            self.streamSecurity.selectItem(withTitle: v2rayConfig.getString(key: .streamSecurity))
+        }
+
+        // tcp
+        if self.tcpHeaderType.itemTitles.contains(v2rayConfig.getString(key: .tcpHeaderType)) {
+            self.tcpHeaderType.selectItem(withTitle: v2rayConfig.getString(key: .tcpHeaderType))
+        }
+
+        // kcp
+        if self.kcpHeader.itemTitles.contains(v2rayConfig.getString(key: .kcpHeader)) {
+            self.kcpHeader.selectItem(withTitle: v2rayConfig.getString(key: .kcpHeader))
+        }
+        self.kcpMtu.intValue = v2rayConfig.getInt(key: .kcpMtu)
+        self.kcpTti.intValue = v2rayConfig.getInt(key: .kcpTti)
+        self.kcpUplinkCapacity.intValue = v2rayConfig.getInt(key: .kcpUplinkCapacity)
+        self.kcpDownlinkCapacity.intValue = v2rayConfig.getInt(key: .kcpDownlinkCapacity)
+        self.kcpReadBufferSize.intValue = v2rayConfig.getInt(key: .kcpReadBufferSize)
+        self.kcpWriteBufferSize.intValue = v2rayConfig.getInt(key: .kcpWriteBufferSize)
+        self.kcpCongestion.intValue = v2rayConfig.getBool(key: .kcpCongestion) ? 1 : 0
+
+        // h2
+        self.h2Host.stringValue = v2rayConfig.getString(key: .h2Host)
+        self.h2Path.stringValue = v2rayConfig.getString(key: .h2Path)
+
+        // ws
+        self.wsPath.stringValue = v2rayConfig.getString(key: .wsPath)
+        self.wsHost.stringValue = v2rayConfig.getString(key: .wsHost)
+
+        // domainsocket
+        self.dsPath.stringValue = v2rayConfig.getString(key: .dsPath)
         // ========================== stream end =======================
     }
 
@@ -308,7 +410,6 @@ class ConfigWindowController: NSWindowController, NSWindowDelegate, NSTabViewDel
 
         let errmsg = self.v2rayConfig.parseJson(jsonText: self.configText.string)
         if errmsg != "" {
-            print("parse json: ", errmsg)
             self.errTip.stringValue = errmsg
             return
         }
@@ -319,7 +420,6 @@ class ConfigWindowController: NSWindowController, NSWindowDelegate, NSTabViewDel
 
         let errmsg = self.v2rayConfig.parseJson(jsonText: self.configText.string)
         if errmsg != "" {
-            print("parse json: ", errmsg)
             self.errTip.stringValue = errmsg
             return
         }

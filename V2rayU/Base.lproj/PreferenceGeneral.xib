@@ -97,7 +97,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="25q-es-1ex"/>
                     </constraints>
-                    <textFieldCell key="cell" controlSize="mini" lineBreakMode="charWrapping" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="based on v2ray-core v3.46" usesSingleLineMode="YES" bezelStyle="round" id="8bU-0Q-dTD">
+                    <textFieldCell key="cell" controlSize="mini" lineBreakMode="charWrapping" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="based on v2rayConfig-core v3.46" usesSingleLineMode="YES" bezelStyle="round" id="8bU-0Q-dTD">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -197,7 +197,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-yO-Zff">
                     <rect key="frame" x="52" y="114" width="106" height="16"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="github.com/v2ray" id="Sw8-ch-1M9">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="github.com/v2rayConfig" id="Sw8-ch-1M9">
                         <font key="font" metaFont="systemUltraLight" size="12"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -216,7 +216,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="lg7-ma-vXy">
                     <rect key="frame" x="154" y="114" width="85" height="15"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(v2ray porject)" id="mfo-GN-bNl">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(v2rayConfig porject)" id="mfo-GN-bNl">
                         <font key="font" metaFont="systemUltraLight" size="11"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

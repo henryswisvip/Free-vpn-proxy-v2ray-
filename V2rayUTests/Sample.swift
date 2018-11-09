@@ -11,7 +11,7 @@ import Foundation
 let jsonTxt = """
 {
   "inbound": {
-    "port": "1080",
+    "port": false,
     "listen": "localhost",
     "protocol": "http",
     "tab": "aaaa",

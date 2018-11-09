@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v2rayConfig</title>
+    <script src="./V2rayConfig.js"></script>
+</head>
+<body>
+<script>
+    var str = {
+        log: {
+            loglevel: "info",
+            access: "",
+            error: ""
+        },
+        dns: {
+            servers: [
+                "8.8.8.8",
+                "1.1.1.1",
+                "119.29.29.29",
+                "114.114.114.114"
+            ]
+        },
+        inbound: {
+            port: 1087,
+            listen: "127.0.0.1",
+            protocol: "http",
+            settings: {
+                timeout: 360
+            }
+        },
+        inboundDetour: [
+            {
+                port: 1080,
+                listen: "127.0.0.1",
+                protocol: "socks",
+                settings: {
+                    auth: "noauth",
+                    timeout: 360,
+                    udp: true
+                }
+            }
+        ],
+        outbound: {
+            tag: "agentout",
+            protocol: "vmess",
+            streamSettings: {
+                network: "h2",
+                httpSettings: {
+                    host: [
+                        "ssl.miwukeji.net"
+                    ],
+                    path: "/ssl"
+                },
+                tlsSettings: {},
+                security: "tls"
+            },
+            settings: {
+                vnext: [
+                    {
+                        users: [
+                            {
+                                alterId: 64,
+                                id: "29f1ae2e-e29d-d804-7bcd-e01b5dfcf26a"
+                            }
+                        ],
+                        port: 443,
+                        address: "ssl.miwukeji.net"
+                    }
+                ]
+            }
+        },
+        outboundDetour: [
+            {
+                tag: "direct",
+                protocol: "freedom",
+                settings: {
+                    response: null
+                }
+            },
+            {
+                tag: "blockout",
+                protocol: "blackhole",
+                settings: {
+                    response: {
+                        type: "http"
+                    }
+                }
+            }
+        ],
+        routing: {
+            strategy: "rules",
+            settings: {
+                domainStrategy: "IPIfNonMatch",
+                rules: [
+                    {
+                        type: "field",
+                        outboundTag: "direct",
+                        ip: [
+                            "geoip:private"
+                        ]
+                    },
+                    {
+                        type: "field",
+                        outboundTag: "direct",
+                        domain: [
+                            "geosite:cn"
+                        ]
+                    },
+                    {
+                        type: "field",
+                        outboundTag: "direct",
+                        ip: [
+                            "geoip:cn"
+                        ]
+                    }
+                ]
+            }
+        }
+    };
+
+
+    // console.log("res", res);
+    if (!v2ray.init(encodeURIComponent(JSON.stringify(str)))) {
+        console.log("error", V2rayConfig.error)
+    } else {
+        // console.log("V2rayConfig.config", V2rayConfig.config)
+    }
+    // v2ray.init("");
+    v2ray.setString("httpPort", '00');
+    v2ray.setString("sockPort", '11');
+    // v2ray.setString("httpPort", '1080');
+    // v2ray.setString("httpPort", '1080');
+    // v2ray.setString("httpPort", '1080');
+    // v2ray.setString("httpPort", '1080');
+    // V2rayConfig.state.newVersion = true;
+    console.log("error", v2ray.apply());
+    console.log("V2rayConfig.bind", V2rayConfig.bind);
+    console.log("V2rayConfig.config", V2rayConfig.config);
+
+
+</script>
+</body>
+</html>

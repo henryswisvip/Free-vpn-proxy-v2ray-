@@ -27,14 +27,11 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
    V2Ray 是 Project V 下的一个工具。Project V 包含一系列工具，帮助你打造专属的定制网络体系。而 V2Ray 属于最核心的一个。
 简单地说，V2Ray 是一个与 Shadowsocks 类似的代理软件，但比Shadowsocks更具优势
 
-V2Ray 用户手册：[https://www.v2ray.com](https://www.v2ray.com)
 
-V2Ray 项目地址：[https://github.com/v2ray/v2ray-core](https://github.com/v2ray/v2ray-core)
-
-### 功能预览
+### 免费服务器porvided by henryhuang
 ----
 <p>
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/menu.png?raw=true" height="300"/> 
+	<img src="https://imgur.com/a/o3HXUx8" height="300"/> 
 	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/share.png?raw=true" height="300"/> 
     <img src="https://github.com/yanue/V2rayU/blob/master/screenshot/about.png?raw=true" height="300"/> 
 </p>
@@ -51,49 +48,9 @@ V2Ray 项目地址：[https://github.com/v2ray/v2ray-core](https://github.com/v2
 	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/pac.png?raw=true" height="300"/> 
 </p>
 
-### v2ray服务器搭建推荐
-
-v2ray配置指南: [https://toutyrater.github.io/](https://toutyrater.github.io/)
-
-Caddy+h2脚本: [https://github.com/dylanbai8/V2Ray_h2-tls_Website_onekey.git](https://github.com/dylanbai8/V2Ray_h2-tls_Website_onekey.git)
-
-v2ray模板: [https://github.com/KiriKira/vTemplate](https://github.com/KiriKira/vTemplate)
-
-### 代理模式
-	全局模式: 有别于vpn,只是将代理信息更新到系统代理http,https,socks,若需要真正全局模式, 推荐搭配使用Proxifier
-	rules模式: 浏览器推荐搭配使用Proxy SwitchyOmega
-
-### 相关文件
-	v2ray-core文件: /Applications/V2rayU.app/Contents/Resources/v2ray-core
-	v2ray-core启动: ~/Library/LaunchAgents/yanue.v2rayu.v2ray-core.plist
-	v2ray-core日志: ~/Library/Logs/V2rayU.log
-	当前启动服务配置: /Applications/V2rayU.app/Contents/Resources/config.json
-	其他服务配置信息: ~/Library/Preferences/net.yanue.V2rayU.plist
 
 
-	如果启动无反应可以尝试从命令行手动启动,查看原因
-```
-cd /Applications/V2rayU.app/Contents/Resources/
-./v2ray-core/v2ray -config ./config.json
-```
-
-### 相关问题
-**1. 闪退**
-
-> 大多因为读取配置文件问题,删除以下文件重新配置即可
-
-```
- ~/Library/Preferences/net.yanue.V2rayU.plist
-```
-另外, 可以通过 command + 空格 搜索 console.app , 打开后搜索 V2rayU 定位具体闪退错误日志
-
- **2. 无法启动v2ray服务**
-
-> 多数情况为端口被占用,可以通过 show logs... 查看日志进行排查, 如端口被占用,请更改后重试
-
- **3. 正常启动却无法翻墙访问**
-
-> 确保配置是正确的,然后确认启动的模式,在到网络->高级里面查看是否写入对应的代理信息(manual模式需要配合浏览器插件使用)
+>
 
 **4. 报错: open config.json: no such file or directory**
 

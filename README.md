@@ -31,7 +31,7 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 ### 免费服务器porvided by henryhuang
 ----
 <p>
-	<img src="https://ibb.co/b5NxRv2" height="300"/> 
+	<img src="https://github.com/henryswisvip/picture-host/blob/master/Screen%20Shot%202020-05-28%20at%204.51.31%20PM.png" height="300"/> 
 	
 </p>
 

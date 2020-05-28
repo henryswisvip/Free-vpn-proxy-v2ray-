@@ -32,20 +32,7 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 ----
 <p>
 	<img src="https://imgur.com/a/o3HXUx8" height="300"/> 
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/share.png?raw=true" height="300"/> 
-    <img src="https://github.com/yanue/V2rayU/blob/master/screenshot/about.png?raw=true" height="300"/> 
-</p>
-<p>
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/import.png?raw=true" width="400"/> 
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/manual.png?raw=true"  width="400"/>
-</p>
-<p>
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/general.png?raw=true" height="300"/> 
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/advance.png?raw=true" height="300"/> 
-</p>
-<p>
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/subscribe.png?raw=true" height="300"/> 
-	<img src="https://github.com/yanue/V2rayU/blob/master/screenshot/pac.png?raw=true" height="300"/> 
+	
 </p>
 
 

@@ -36,7 +36,7 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 ### 免费服务器porvided by henryhuang
 ----
 <p>
-	<img src="https://github.com/henryswisvip/trust/blob/master/Screen%20Shot%202020-06-08%20at%209.41.04%20AM.png" height="300"/> 
+	<img src="https://github.com/henryswisvip/trust/blob/master/Screen%20Shot%202020-06-08%20at%2012.07.32%20PM.png" height="300"/> 
 	vmess://eyJwb3J0IjoiNDQzIiwicHMiOiJTV0lTVklQVVMxIiwidGxzIjoidGxzIiwiaWQiOiIwMDU5YmM4OC1hNzY5LTExZWEtOTQ2OS01NjAwMDJjZmYzZDYiLCJhaWQiOiI0NiIsInYiOiIyIiwiaG9zdCI6Im1pbGtnb2dvLnRrIiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiXC83TzU2OGlGa1wvIiwibmV0Ijoid3MiLCJhZGQiOiJtaWxrZ29nby50ayJ9
 	<img src="https://github.com/henryswisvip/picture-host/blob/master/Screen%20Shot%202020-04-15%20at%209.01.03%20PM.png"
 	     height="300"/>

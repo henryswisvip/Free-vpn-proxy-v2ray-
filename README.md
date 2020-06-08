@@ -21,7 +21,10 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 > [https://github.com/yanue/V2rayU/releases](https://github.com/yanue/V2rayU/releases)
 
 
-打开dmg然后拖到application里面。然后在application里面打开v2rayu。
+打开dmg然后拖到application里面。
+
+然后在application里面打开v2rayu。
+
 打开完v2rayu之后在屏幕上方
 <img src="https://github.com/henryswisvip/trust/blob/master/Screen%20Shot%202020-06-08%20at%209.42.57%20AM.png" height="300"/> 
 

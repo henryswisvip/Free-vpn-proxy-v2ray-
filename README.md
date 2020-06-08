@@ -25,8 +25,15 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 
 然后在application里面打开v2rayu。
 
+
 打开完v2rayu之后在屏幕上方
-<img src="https://github.com/henryswisvip/trust/blob/master/copy%20past.png" height="300"/> 
+<img src="https://github.com/henryswisvip/trust/blob/master/Screen%20Shot%202020-06-08%20at%209.42.57%20AM.png" height="300"/> 
+
+
+
+
+
+
 
 然后导入到v2ray里面
 <img src="https://github.com/henryswisvip/trust/blob/master/import.png" height="300"/> 
@@ -34,11 +41,7 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 
 
 现在会到这个页面复制vmess://eyJwb3J0IjoiNDQzIiwicHMiOiJTV0lTVklQVVMxIiwidGxzIjoidGxzIiwiaWQiOiIwMDU5YmM4OC1hNzY5LTExZWEtOTQ2OS01NjAwMDJjZmYzZDYiLCJhaWQiOiI0NiIsInYiOiIyIiwiaG9zdCI6Im1pbGtnb2dvLnRrIiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiXC83TzU2OGlGa1wvIiwibmV0Ijoid3MiLCJhZGQiOiJtaWxrZ29nby50ayJ9
-<img src="https://github.com/henryswisvip/trust/blob/master/Screen%20Shot%202020-06-08%20at%209.42.57%20AM.png" height="300"/> 
-
-
-
-
+<img src="https://github.com/henryswisvip/trust/blob/master/copy%20past.png" height="300"/> 
 
 
 ### v2ray简介

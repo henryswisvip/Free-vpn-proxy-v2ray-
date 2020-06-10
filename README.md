@@ -32,7 +32,7 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 
 -----------------------------------------------------------------------------------------------------------------------------
 
-现在回到到这个页面复制<img src="https://github.com/henryswisvip/trust/blob/master/copy%20past.png" height="300"/> vmess://eyJwb3J0IjoiNDQzIiwicHMiOiJTV0lTVklQVVMxIiwidGxzIjoidGxzIiwiaWQiOiIwMDU5YmM4OC1hNzY5LTExZWEtOTQ2OS01NjAwMDJjZmYzZDYiLCJhaWQiOiI0NiIsInYiOiIyIiwiaG9zdCI6Im1pbGtnb2dvLnRrIiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiXC83TzU2OGlGa1wvIiwibmV0Ijoid3MiLCJhZGQiOiJtaWxrZ29nby50ayJ9
+现在回到到这个页面复制<img src="https://github.com/henryswisvip/trust/blob/master/copy%20past.png" height="300"/> vmess://eyJwb3J0IjoiNDQzIiwicHMiOiJzd2lzdmlwdXMyIiwidGxzIjoidGxzIiwiaWQiOiIxYzU3M2QzOC1hNzZhLTExZWEtOGM5MC01NjAwMDJjZmY0YWYiLCJhaWQiOiI0NiIsInYiOiIyIiwiaG9zdCI6Im1pbGtnb2dvLmNmIiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiXC9JRWhQOWtYVlwvIiwibmV0Ijoid3MiLCJhZGQiOiJtaWxrZ29nby5jZiJ9
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ V2rayU 是一款v2ray mac客户端,用于科学上网,使用swift4.2编写,基�
 ----
 <p>
 	<img src="https://github.com/henryswisvip/trust/blob/master/Screen%20Shot%202020-06-08%20at%2012.07.32%20PM.png" height="300"/> 
-	vmess://eyJwb3J0IjoiNDQzIiwicHMiOiJTV0lTVklQVVMxIiwidGxzIjoidGxzIiwiaWQiOiIwMDU5YmM4OC1hNzY5LTExZWEtOTQ2OS01NjAwMDJjZmYzZDYiLCJhaWQiOiI0NiIsInYiOiIyIiwiaG9zdCI6Im1pbGtnb2dvLnRrIiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiXC83TzU2OGlGa1wvIiwibmV0Ijoid3MiLCJhZGQiOiJtaWxrZ29nby50ayJ9
+	vmess://eyJwb3J0IjoiNDQzIiwicHMiOiJzd2lzdmlwdXMyIiwidGxzIjoidGxzIiwiaWQiOiIxYzU3M2QzOC1hNzZhLTExZWEtOGM5MC01NjAwMDJjZmY0YWYiLCJhaWQiOiI0NiIsInYiOiIyIiwiaG9zdCI6Im1pbGtnb2dvLmNmIiwidHlwZSI6Im5vbmUiLCJwYXRoIjoiXC9JRWhQOWtYVlwvIiwibmV0Ijoid3MiLCJhZGQiOiJtaWxrZ29nby5jZiJ9
 	<img src="https://github.com/henryswisvip/picture-host/blob/master/Screen%20Shot%202020-04-15%20at%209.01.03%20PM.png"
 	     height="300"/>
 	
